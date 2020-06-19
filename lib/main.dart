@@ -27,7 +27,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(''),
+        title: Text('Bloc Counter'),
       ),
       body: BlocBuilder<CounterBloc, CounterState>(builder: (context, state) {
         return Center(
@@ -44,7 +44,7 @@ class MyHomePage extends StatelessWidget {
       }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          BlocProvider.of<CounterBloc>(context).add(CounterIncrement());
+          BlocProvider.of<CounterBloc>(context).add(CounterIncrement(count: 1));
         },
         tooltip: 'Increment',
         child: Icon(Icons.add),
@@ -54,7 +54,7 @@ class MyHomePage extends StatelessWidget {
 
   Text buildCounterText(BuildContext context, CounterState state) {
     return Text(
-      state is CounterRunningState ? state.count : '',
+      state is CounterRunningState ? '${state.count}' : '',
       style: Theme.of(context).textTheme.headline4,
     );
   }

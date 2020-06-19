@@ -16,9 +16,9 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
   ) async* {
     int _current = (state as CounterRunningState).count;
     if (event is CounterIncrement) {
-      yield CounterRunningState(count: _current + 1);
+      yield CounterRunningState(count: _current + event.count);
     } else if (event is CounterDecrement) {
-      yield CounterRunningState(count: _current - 1);
+      yield CounterRunningState(count: _current - event.count);
     }
   }
 }
